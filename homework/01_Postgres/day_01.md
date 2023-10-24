@@ -2,7 +2,7 @@
 
 1. https://www.postgresql.org/docs/
 2. **CLI**  
-	- **\?**: help on CLI commands (some of them very useful, could avoid writing some queries).
+	- **\\?**: help on CLI commands (some of them very useful, could avoid writing some queries).
 	- **\h**: help on SQL commands.
 3. When using CREATE TABLE we can choose the way we REFERENCE multiple columns in other table (FOREIGN KEYS):  
 	- **MATCH FULL**: will not allow one column to be null unless all foreign key columns are null; if they're all null, the row is not required to have a match in the referenced table.  
