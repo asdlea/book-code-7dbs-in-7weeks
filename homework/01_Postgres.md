@@ -77,26 +77,37 @@ SELECT * FROM crosstab(
 
 ```sql
 SELECT * FROM crosstab(
-   'SELECT
-       EXTRACT(WEEK FROM starts) - EXTRACT(WEEK FROM date_trunc(''MONTH'', starts)) + 1 AS week_of_month,
-       EXTRACT(DOW FROM starts) AS day_of_week,
-       COUNT(*) AS event_count
-     FROM
-       events
-     WHERE
-       EXTRACT(MONTH FROM starts) = 2 -- Replace with the desired month
-     GROUP BY 1, 2
-     ORDER BY 1, 2',
-   'SELECT generate_series(0, 6)'
+    'SELECT
+        EXTRACT(WEEK FROM starts) - EXTRACT(WEEK FROM date_trunc(''MONTH'', starts)) + 1 AS week_of_month,
+        EXTRACT(DOW FROM starts) AS day_of_week,
+        COUNT(*) AS event_count
+    FROM events
+    WHERE
+        EXTRACT(MONTH FROM starts) = 2 -- Replace with the desired month
+    GROUP BY 1, 2
+    ORDER BY 1, 2',
+    'SELECT generate_series(0, 6)'
 ) 
 AS (
-   week_of_month INTEGER,
-   Sunday INTEGER,
-   Monday INTEGER,
-   Tuesday INTEGER,
-   Wednesday INTEGER,
-   Thursday INTEGER,
-   Friday INTEGER,
-   Saturday INTEGER
+    week_of_month INTEGER,
+    Sunday INTEGER,
+    Monday INTEGER,
+    Tuesday INTEGER,
+    Wednesday INTEGER,
+    Thursday INTEGER,
+    Friday INTEGER,
+    Saturday INTEGER
 );
 ```
+
+## Day 3
+
+### Find
+
+1. <https://www.postgresql.org/docs/current/contrib.html>
+2. <https://en.wikibooks.org/wiki/Regular_Expressions/POSIX_Basic_Regular_Expressions>
+
+### Do
+
+1. Create a stored procedure that enables you to input a movie title or an actor’s name and then receive the top five suggestions based on either movies the actor has starred in or films with similar genres. **TODO**
+2. Expand the movies database to track user comments and extract keywords (minus English stopwords). Cross-reference these keywords with actors’ last names and try to find the most talked-about actors. **TODO**
